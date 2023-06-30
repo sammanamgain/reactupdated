@@ -4,10 +4,10 @@ import PropTypes from "prop-types";
 export default function Navbar(props) {
   return (
     <div>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
-            {props.title}
+          <a className="navbar-brand " href="#">
+            {props.object.title}
           </a>
           <button
             className="navbar-toggler"
@@ -28,8 +28,8 @@ export default function Navbar(props) {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
-                  {props.about}
+                <a className="nav-link " href="#">
+                  {props.object.about}
                 </a>
               </li>
             </ul>
@@ -48,7 +48,7 @@ export default function Navbar(props) {
         </div>
       </nav>
     </div>
-    );
+  );
   
 }
 // props validation
@@ -62,6 +62,8 @@ export default function Navbar(props) {
 // };
 
  Navbar.propTypes = {
-    title: PropTypes.string,
-    about: PropTypes.string,
-};
+   object: PropTypes.shape({
+     title: PropTypes.string.isRequired,
+     about: PropTypes.string.isRequired,
+   }).isRequired,
+ };

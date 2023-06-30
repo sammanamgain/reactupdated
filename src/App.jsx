@@ -1,6 +1,8 @@
 import Navbar from "./components/Navbar";
 import "./App.css";
-let object = { title: "TextUtils2", about: "About US" };
+import Textarea from "./components/Textarea";
+import About from "./components/About";
+let object = { title: "TextUtils", about: "About US" };
 function App() {
   return (
     <>
@@ -8,6 +10,8 @@ function App() {
       <div>
         <h1> Hi this is first react custom app </h1>
       </div>
+      <Textarea heading=" Enter the text"></Textarea>
+      <About></About>
     </>
   );
 }
