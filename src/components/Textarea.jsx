@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import PropTypes from "prop-types";
 
 export default function Textarea(props) {
@@ -17,6 +17,7 @@ export default function Textarea(props) {
   };
     return (
       <>
+        {console.log("textarea called")}
         <div className="container">
           <div className="mb-3">
             <label htmlFor="exampleFormControlTextarea1" className="form-label">

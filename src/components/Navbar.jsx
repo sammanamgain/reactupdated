@@ -1,13 +1,17 @@
-
 //import React from "react";
+
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 export default function Navbar(props) {
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav
+        className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}
+      >
         <div className="container-fluid">
           <a className="navbar-brand " href="#">
             {props.object.title}
+            { console.log("again navbar is called")}
           </a>
           <button
             className="navbar-toggler"
@@ -23,14 +27,35 @@ export default function Navbar(props) {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
+                <Link className="nav-link active" aria-current="page" to="/">
                   Home
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link " href="#">
+                <Link className="nav-link " to="/about">
                   {props.object.about}
-                </a>
+                </Link>
+              </li>
+
+              <li>
+                <div className="form-check form-switch ms-5 mt-2">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    role="switch"
+                    id="flexSwitchCheckDefault"
+                    onClick={
+                    // onClick={console.log("only this called");
+                  props.changetheme
+                  }
+                  />
+                  <label
+                    className="form-check-label"
+                    htmlFor="flexSwitchCheckDefault"
+                  >
+                    ChangeTheme
+                  </label>
+                </div>
               </li>
             </ul>
             <form className="d-flex" role="search">
@@ -49,7 +74,6 @@ export default function Navbar(props) {
       </nav>
     </div>
   );
-  
 }
 // props validation
 // Navbar.propTypes = {
@@ -61,9 +85,11 @@ export default function Navbar(props) {
 //       about: "showing",
 // };
 
- Navbar.propTypes = {
-   object: PropTypes.shape({
-     title: PropTypes.string.isRequired,
-     about: PropTypes.string.isRequired,
-   }).isRequired,
- };
+Navbar.propTypes = {
+  object: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    about: PropTypes.string.isRequired,
+  }).isRequired,
+  mode: PropTypes.string,
+  changetheme:PropTypes.func
+};

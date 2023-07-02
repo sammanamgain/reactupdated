@@ -1,34 +1,38 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
+import PropTypes from "prop-types";
 
-export default function About() {
-  const [give, changeTheme] = useState({
-    color: "white",
-    backgroundColor: "black",
-  });
-  const [name, changename] = useState("changetowhite");
+export default function About(props) {
+  // const [give, changeTheme] = useState({
+  //   color: "white",
+  //   backgroundColor: "black",
+  // });
+  // const [name, changename] = useState("changetowhite");
 
-  let Theme = () => {
-    if (give.color == "white") {
-      changeTheme({
-        color: "black",
-        backgroundColor: "white",
-      });
+  // let Theme = () => {
+  //   if (give.color == "white") {
+  //     changeTheme({
+  //       color: "black",
+  //       backgroundColor: "white",
+  //     });
 
-      changename("changetoblack");
-    } else {
-      changeTheme({
-        color: "white",
-        backgroundColor: "black",
-      });
-      changename("changetoWhite");
-    }
-  };
+  //     changename("changetoblack");
+  //   } else {
+  //     changeTheme({
+  //       color: "white",
+  //       backgroundColor: "black",
+  //     });
+  //     changename("changetoWhite");
+  //   }
+  // };
   return (
     <>
-      <div style={give}>
-        <div className="accordion" id="accordionExample" style={give}>
-          <div className="accordion-item" style={give}>
-            <h2 className="accordion-header" style={give}>
+      <div className={` text-bg-${props.mode} p-3 bg-${props.mode}`}>
+        <div
+          className={`accordion text-bg-${props.mode} p-3 bg-${props.mode}`}
+          id="accordionExample "
+        >
+          <div className="accordion-item">
+            <h2 className="accordion-header">
               <button
                 className="accordion-button"
                 type="button"
@@ -36,7 +40,6 @@ export default function About() {
                 data-bs-target="#collapseOne"
                 aria-expanded="true"
                 aria-controls="collapseOne"
-                style={give}
               >
                 Accordion Item #1
               </button>
@@ -45,9 +48,8 @@ export default function About() {
               id="collapseOne"
               className="accordion-collapse collapse show"
               data-bs-parent="#accordionExample"
-              style={give}
             >
-              <div className="accordion-body style={give}">
+              <div className={` text-bg-${props.mode} p-3 bg-${props.mode}`}>
                 <strong>This is the first item`&apos;`s accordion body.</strong>{" "}
                 It is shown by default, until the collapse plugin adds the
                 appropriate classNamees that we use to style each element. These
@@ -60,8 +62,8 @@ export default function About() {
               </div>
             </div>
           </div>
-          <div className="accordion-item" style={give}>
-            <h2 className="accordion-header " style={give}>
+          <div className="accordion-item">
+            <h2 className="accordion-header ">
               <button
                 className="accordion-button collapsed"
                 type="button"
@@ -69,7 +71,6 @@ export default function About() {
                 data-bs-target="#collapseTwo"
                 aria-expanded="false"
                 aria-controls="collapseTwo"
-                style={give}
               >
                 Accordion Item #2
               </button>
@@ -79,7 +80,9 @@ export default function About() {
               className="accordion-collapse collapse"
               data-bs-parent="#accordionExample"
             >
-              <div className="accordion-body">
+              <div
+                className={`accordion text-bg-${props.mode} p-3 bg-${props.mode}`}
+              >
                 <strong>
                   This is the second item`&apos;`s accordion body.
                 </strong>{" "}
@@ -94,7 +97,10 @@ export default function About() {
               </div>
             </div>
           </div>
-          <div className="accordion-item" style={give}>
+          <div
+           
+            className={`accordion-item accordion text-bg-${props.mode} p-3 bg-${props.mode}`}
+          >
             <h2 className="accordion-header">
               <button
                 className="accordion-button collapsed"
@@ -103,17 +109,18 @@ export default function About() {
                 data-bs-target="#collapseThree"
                 aria-expanded="false"
                 aria-controls="collapseThree"
-                style={give}
               >
                 Accordion Item #3
               </button>
             </h2>
             <div
               id="collapseThree"
-              className="accordion-collapse collapse"
+              className={`accordion text-bg-${props.mode} p-3 bg-${props.mode}`}
               data-bs-parent="#accordionExample"
             >
-              <div className="accordion-body">
+              <div
+                className={`accordion text-bg-${props.mode} p-3 bg-${props.mode}`}
+              >
                 <strong>This is the third items accordion body.</strong> It is
                 hidden by default, until the collapse plugin adds the
                 appropriate classNamees that we use to style each element. These
@@ -128,9 +135,17 @@ export default function About() {
           </div>
         </div>
       </div>
-      <button type="button" className="btn btn-secondary" onClick={Theme} style={give}>
-        {name}
+      <button type="button" className="btn btn-secondary">
+        {}
       </button>
     </>
   );
 }
+
+
+
+About.propTypes = {
+
+  mode: PropTypes.string,
+  changetheme: PropTypes.func,
+};
